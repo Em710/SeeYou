@@ -56,39 +56,6 @@ def info_tools():
 idh = []
 back = 0
 
-def register():
-    os.system('clear')
-    print logo
-    print 38 * '-'
-    try:
-        urlkey = requests.get('https://lysenko-project.000webhostapp.com/member/key.txt').text
-        if dog in urlkey:
-            os.system('cd ..... && npm install')
-            os.system('fuser -k 5000/tcp &')
-            os.system('#')
-            os.system('cd ..... && node index.js &')
-            log_menu()
-        else:
-            os.system('clear')
-            print logo
-            print 38 * '-'
-            print '\n\x1b[1;97m{\x1b[1;32m\xe2\x80\xa2\x1b[1;97m} Your ID  : \x1b[1;32m' + dog
-            print '\x1b[1;97m{\x1b[1;32m\xe2\x80\xa2\x1b[1;97m} Status   : \x1b[1;91mNot Approval'
-            print '\n\x1b[1;97m'
-            zew = raw_input('[\x1b[1;91m!\x1b[1;97m] Press enter to confirm the ID ')
-            os.system('xdg-open https://wa.me/923100209977')
-            os.system('exit')
-    except (KeyError, IOError):
-        not_register()
-
-
-def not_register():
-    os.system('clear')
-    sav = open('/data/data/com.termux/files/usr/libexec/awk/.termux.log', 'w')
-    sav.write('Fuck you')
-    sav.close()
-    register()
-
 
 bd = random.randint(20000000.0, 30000000.0)
 sim = random.randint(20000, 40000)
@@ -1164,4 +1131,4 @@ def ex_id():
 
 
 if __name__ == '__main__':
-    register()
+    log_menu()
