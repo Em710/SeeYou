@@ -121,7 +121,6 @@ def log_fb():
             raw_input('\x1b[1;97m[\x1b[1;91m!\x1b[1;97m] Press enter to back! ')
             log_menu()
     except:
-        print ''
         print '\x1b[1;97m[\x1b[1;91m!\x1b[1;97m] Login Failed!'
         os.system('exit')
 
@@ -146,7 +145,6 @@ def log_token():
 def log_cookie():
     os.system('clear')
     print logo
-    print ''
     try:
         cookie = raw_input('\x1b[1;97m[\x1b[1;32m>\x1b[1;97m] Enter Cookie  : ')
         data = {'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Kiwi Chrome/68.0.3438.0 Safari/537.36', 'referer': 'https://m.facebook.com/', 'host': 'm.facebook.com', 
