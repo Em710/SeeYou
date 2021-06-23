@@ -129,12 +129,18 @@ def log_fb():
 def log_token():
     os.system('clear')
     print logo
-    print 38 * '-'
-    tok = raw_input('\n\x1b[1;97m[\x1b[1;32m>\x1b[1;97m] Enter Token : \x1b[1;32m')
-    t_s = open('access_token.txt', 'w')
-    t_s.write(tok)
-    t_s.close()
-    menu()
+    toket = raw_input(" Paste Access Token Here: ")
+    try:
+        otw = requests.get('https://graph.facebook.com/me?access_token=' + toket)
+        a = json.loads(otw.text)
+        nama = a['name']
+        zedd = open('login.txt', 'w')
+        zedd.write(toket)
+        zedd.close()
+        print '\x1b[1;92m[\xe2\x9c\x93] Login Success {^_^} '
+        os.system('xdg-open https://m.facebook.com/Kudiyan.Da.Prince')
+        time.sleep(1)
+        log_menu()
 
 
 def log_cookie():
