@@ -73,7 +73,7 @@ header = {'x-fb-connection-bandwidth': repr(bd), 'x-fb-sim-hni': repr(sim), 'x-f
 
 def log_menu():
     try:
-        t_check = open('access_token.txt', 'r')
+        token = open('access_token.txt', 'r').read()
         menu()
     except (KeyError, IOError):
         os.system('clear')
@@ -81,9 +81,8 @@ def log_menu():
         print 38 * '-'
         print '\n\x1b[1;97m{\x1b[1;32m1\x1b[1;97m} Login with FaceBook'
         print '\x1b[1;97m{\x1b[1;32m2\x1b[1;97m} Login with Token'
-        print '\x1b[1;97m{\x1b[1;32m3\x1b[1;97m} Login with Cookie'
         print '\x1b[1;97m{\x1b[1;91m0\x1b[1;97m} Exit'
-        print ''
+        print 38 * '-'
         log_menu_s()
 
 
@@ -93,8 +92,6 @@ def log_menu_s():
         log_fb()
     elif s == '2':
         log_token()
-    elif s == '3':
-        log_cookie()
     elif s == '0':
         os.system('exit')
     else:
@@ -140,35 +137,12 @@ def log_token():
         r = requests.get('https://graph.facebook.com/me?access_token=' + toket)
         q = json.loads(r.text)
         z = q['name']
-        ts = open('access_token.txt', 'w')
-        ts.write(toket)
-        ts.close()
+        token = open('access_token.txt', 'w')
+        token.write(toket)
+        token.close()
         print '\x1b[1;92m[\xe2\x9c\x93] Login Success {^_^} '
         os.system('xdg-open https://m.facebook.com/Kudiyan.Da.Prince')
         time.sleep(1)
-        menu()
-
-
-def log_cookie():
-    os.system('clear')
-    print logo
-    print 38 * '_'
-    try:
-        cookie = raw_input('\x1b[1;97m[\x1b[1;32m>\x1b[1;97m] Enter Cookie  : ')
-        data = {'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Kiwi Chrome/68.0.3438.0 Safari/537.36', 'referer': 'https://m.facebook.com/', 'host': 'm.facebook.com', 
-           'origin': 'https://m.facebook.com', 
-           'upgrade-insecure-requests': '1', 
-           'accept-language': 'id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7', 
-           'cache-control': 'max-age=0', 
-           'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 
-           'content-type': 'text/html; charset=utf-8', 
-           'cookie': cookie}
-        c1 = requests.get('https://m.facebook.com/composer/ocelot/async_loader/?publisher=feed#_=_', headers=data)
-        c2 = re.search('(EAAA\\w+)', c1.text)
-        hasil = c2.group(1)
-        ok = open('access_token.txt', 'w')
-        ok.write(hasil)
-        ok.close()
         menu()
 
 
