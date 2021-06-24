@@ -60,7 +60,7 @@ def tokenz():
 			avsid.write(token)
 			avsid.close()
 			print(" \033[0;97m[\033[0;92m+\033[0;97m] Login Successfully")
-			bot_komen()
+			menu()
 		except KeyError:
 			exit(" \033[0;97m[\033[0;91m!\033[0;97m] Token Invalid")
 
