@@ -73,7 +73,7 @@ def menu():
 		print(' \033[0;97m[\033[0;91m!\033[0;97m] Token Invalid')
 		os.system('clear')
 		os.system('rm -rf login.txt')
-		tokenz()
+		loop()
 	try:
 		otw = requests.get('https://graph.facebook.com/me/?access_token='+token)
 		a = json.loads(otw.text)
