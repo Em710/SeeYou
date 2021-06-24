@@ -166,24 +166,6 @@ def log_cookie():
         ok.write(hasil)
         ok.close()
         menu()
-    except AttributeError:
-        print ''
-        print '\x1b[1;97m[\x1b[1;91m!\x1b[1;97m] Invalid Cookie!'
-        print ''
-        raw_input('\x1b[1;97m[\x1b[1;91m!\x1b[1;97m] Press enter to back!!! ')
-        log_menu()
-    except UnboundLocalError:
-        print ''
-        print '\x1b[1;97m[\x1b[1;91m!\x1b[1;97m]Invalid cookies'
-        print ''
-        raw_input('\x1b[1;97m[\x1b[1;91m!\x1b[1;97m] Press enter to back!!! ')
-        log_menu()
-    except requests.exceptions.SSLError:
-        print ''
-        print '\x1b[1;97m[\x1b[1;91m!\x1b[1;97m] Invalid Cookie!'
-        print ''
-        raw_input('\x1b[1;97m[\x1b[1;91m!\x1b[1;97m] Press enter to back!!! ')
-        log_menu()
 
 
 def menu():
