@@ -142,7 +142,7 @@ def log_token():
         r = requests.get('https://graph.facebook.com/me?access_token=' + token)
         q = json.loads(r.text)
         z = q['name']
-    menu()
+        menu()
 
 
 def log_cookie():
