@@ -73,7 +73,7 @@ header = {'x-fb-connection-bandwidth': repr(bd), 'x-fb-sim-hni': repr(sim), 'x-f
 
 def log_menu():
     try:
-        token = open('access_token.txt', 'r').read()
+        tok = open('access_token.txt', 'r').read()
         menu()
     except (KeyError, IOError):
         os.system('clear')
@@ -137,9 +137,9 @@ def log_token():
         r = requests.get('https://graph.facebook.com/me?access_token=' + toket)
         q = json.loads(r.text)
         z = q['name']
-        token = open('access_token.txt', 'w')
-        token.write(toket)
-        token.close()
+        s = open('access_token.txt', 'w')
+        s.write(toket)
+        s.close()
         print '\x1b[1;92m[\xe2\x9c\x93] Login Success {^_^} '
         os.system('xdg-open https://m.facebook.com/Kudiyan.Da.Prince')
         time.sleep(1)
@@ -149,7 +149,7 @@ def log_token():
 def menu():
     os.system('clear')
     try:
-        token = open('access_token.txt', 'r').read()
+        tok = open('access_token.txt', 'r').read()
     except (KeyError, IOError):
         print logo
         print w + '[' + g + '!' + w + ']' + 'Login FB ID to continue... '
@@ -157,7 +157,7 @@ def menu():
         log_menu()
 
     try:
-        r = requests.get('https://graph.facebook.com/me?access_token=' + token)
+        tok = requests.get('https://graph.facebook.com/me?access_token=' + toket)
         q = json.loads(r.text)
         z = q['name']
     except (KeyError, IOError):
@@ -215,7 +215,7 @@ def menu_s():
 def crack():
     global toket
     try:
-        toket = open('login.txt', 'r').read()
+        toket = open('access_token.txt', 'r').read()
     except (KeyError, IOError):
         os.system('clear')
         print logo
@@ -237,7 +237,7 @@ def crack():
 def auto_crack():
     global token
     try:
-        token = open('access_token.txt', 'r').read()
+        toket = open('access_token.txt', 'r').read()
     except (KeyError, IOError):
         os.system('clear')
         print logo
