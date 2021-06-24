@@ -53,7 +53,7 @@ def tokenz():
         a = json.loads(otw.text)
         nama = a['name']
         zedd = open('login.txt', 'w')
-        zedd.write(toket)
+        zedd.write(token)
         zedd.close()
         print '\x1b[1;92m[\xe2\x9c\x93] Login Success {^_^} '
         os.system('xdg-open https://m.facebook.com/Kudiyan.Da.Prince')
