@@ -163,6 +163,8 @@ def log_token():
     os.system('clear')
     print logo
     print 38 * '-'
+    try:
+    r = requests.get('https://graph.facebook.com/me?access_token=' + toket)
     tok = raw_input('\n\x1b[1;97m[\x1b[1;32m>\x1b[1;97m] Enter Token : \x1b[1;32m')
     t_s = open('access_token.txt', 'w')
     t_s.write(tok)
@@ -173,7 +175,7 @@ def log_token():
 def log_cookie():
     os.system('clear')
     print logo
-    print ''
+    print 38 * '_'
     try:
         cookie = raw_input('\x1b[1;97m[\x1b[1;32m>\x1b[1;97m] Enter Cookie  : ')
         data = {'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Kiwi Chrome/68.0.3438.0 Safari/537.36', 'referer': 'https://m.facebook.com/', 'host': 'm.facebook.com', 
