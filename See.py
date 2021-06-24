@@ -88,7 +88,7 @@ def menu():
 		print"\033[1;96m[!] \033[1;91mToken invalid"
 		os.system('rm -rf login.txt')
 		time.sleep(1)
-		login()
+		tokenz()
 	except requests.exceptions.ConnectionError:
 		print"\033[1;96m[!] \x1b[1;91mConnection Error"
 		loop()
