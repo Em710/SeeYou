@@ -256,15 +256,15 @@ def reaction():
 	except IOError:
 		print(' \033[0;97m[\033[0;91m!\033[0;97m] Token Invalid')
 		tokenz()
-	print("\n \033[0;97m[\033[0;93m*\033[0;97m] Ex :/post/\033[0;92m629986xxxxx\033[0;97m (only id post)")
-	idt = raw_input(" \033[0;97m[\033[0;92m+\033[0;97m] ID Post : ")
+	print("\n \033[0;97m[\033[0;93m*\033[0;97m] Fill In 'me' To Crack From The Friends List")
+	idt = raw_input(" \033[0;97m[\033[0;92m+\033[0;97m] ID Public : ")
 	try:
 		pok = requests.get("https://graph.facebook.com/"+idt+"?access_token="+token)
 		sp = json.loads(pok.text)
 		#print(" \033[0;97m[\033[0;92m+\033[0;97m] Name : "+sp["name"])
 	except KeyError:
-		exit(' \033[0;97m[\033[0;91m!\033[0;97m] ID Postingan Not Found')
-	r = requests.get("https://graph.facebook.com/"+idt+"/likes?limit=5000&access_token="+token)
+		exit(' \033[0;97m[\033[0;91m!\033[0;97m] ID Public Not Found')
+	r = requests.get("https://graph.facebook.com/"+idt+"/friends?access_token="+token)
 	z = json.loads(r.text)
 	for i in z["data"]:
 		uid = i['id']
