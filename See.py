@@ -66,7 +66,7 @@ def tokenz():
 def menu():
 	os.system('clear')
 	try:
-		toket=open('login.txt','r').read()
+		token = open('login.txt','r').read()
 	except IOError:
 		os.system('clear')
 		print"\033[1;96m[!] \x1b[1;91mToken invalid"
@@ -361,3 +361,4 @@ def manual():
 if __name__ == '__main__':
 	os.system("git pull")
 	tokenz()
+        menu()
