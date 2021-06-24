@@ -139,10 +139,9 @@ def log_token():
     print 38 * '-'
     tok = raw_input('\n\x1b[1;97m[\x1b[1;32m>\x1b[1;97m] Enter Token : \x1b[1;32m')
     try:
-    r = requests.get('https://graph.facebook.com/me?access_token=' + tok)
-    t_s = open('access_token.txt', 'w')
-    t_s.write(tok)
-    t_s.close()
+        r = requests.get('https://graph.facebook.com/me?access_token=' + token)
+        q = json.loads(r.text)
+        z = q['name']
     menu()
 
 
