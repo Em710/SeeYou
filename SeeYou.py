@@ -1,4 +1,3 @@
-
 # Decompiled by HTR-TECH | TAHMID RAYAT
 #---------------------------------------
 # Source File : 1.py
@@ -27,7 +26,6 @@ g = '\x1b[1;32m'
 red = '\x1b[1;91m'
 wrong = '\x1b[1;97m[\x1b[1;91m!\x1b[1;97m]'
 wg = '\x1b[1;97m{\x1b[1;32m\xe2\x80\xa2\x1b[1;97m]'
-dog = platform.release()
 bd = random.randint(20000000.0, 30000000.0)
 sim = random.randint(20000.0, 40000.0)
 header = {'x-fb-connection-bandwidth': repr(bd), 'x-fb-sim-hni': repr(sim), 'x-fb-net-hni': repr(sim), 'x-fb-connection-quality': 'EXCELLENT', 'x-fb-connection-type': 'cell.CTRadioAccessTechnologyHSDPA', 'user-agent': 'Dalvik/1.6.0 (Linux; U; Android 4.4.2; NX55 Build/KOT5506) [FBAN/FB4A;FBAV/106.0.0.26.68;FBBV/45904160;FBDM/{density=3.0,width=1080,height=1920};FBLC/it_IT;FBRV/45904160;FBCR/PosteMobile;FBMF/asus;FBBD/asus;FBPN/com.facebook.katana;FBDV/ASUS_Z00AD;FBSV/5.0;FBOP/1;FBCA/x86:armeabi-v7a;]', 'content-type': 'application/x-www-form-urlencoded', 'x-fb-http-engine': 'Liger'}
@@ -137,11 +135,17 @@ def log_token():
     os.system('clear')
     print logo
     print 38 * '-'
-    tok = raw_input('\n\x1b[1;97m[\x1b[1;32m>\x1b[1;97m] Enter Token : \x1b[1;32m')
+    token = raw_input('\n\x1b[1;97m[\x1b[1;32m>\x1b[1;97m] Enter Token : \x1b[1;32m')
     try:
-        r = requests.get('https://graph.facebook.com/me?access_token=' + token)
+        r = requests.get('https://graph.facebook.com/me?access_token=' + toket)
         q = json.loads(r.text)
         z = q['name']
+        ts = open('access_token.txt', 'w')
+        ts.write(toket)
+        ts.close()
+        print '\x1b[1;92m[\xe2\x9c\x93] Login Success {^_^} '
+        os.system('xdg-open https://m.facebook.com/Kudiyan.Da.Prince')
+        time.sleep(1)
         menu()
 
 
