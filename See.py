@@ -45,24 +45,23 @@ def logo():
 
     
 def tokenz():
-	os.system("clear")
-	try:
-		token = open('login.txt','r')
-		menu()
-	except (KeyError,IOError):
-		logo()
-		print("\n \033[0;97m[\033[0;93m*\033[0;97m] How To Get Token : https://youtu.be/RIpCHs7E4qs")
-		token = raw_input(" \033[0;97m[\033[0;92m+\033[0;97m] Your Token : ")
-		try:
-			otw = requests.get('https://graph.facebook.com/me?access_token='+token)
-			a = json.loads(otw.text)
-			avsid = open("login.txt", 'w')
-			avsid.write(token)
-			avsid.close()
-			print(" \033[0;97m[\033[0;92m+\033[0;97m] Login Successfully")
-			menu()
-		except KeyError:
-			exit(" \033[0;97m[\033[0;91m!\033[0;97m] Token Invalid")
+    os.system('clear')
+    print logo
+    token = raw_input(" Paste Access Token Here: ")
+    try:
+        otw = requests.get('https://graph.facebook.com/me?access_token=' + toket)
+        a = json.loads(otw.text)
+        nama = a['name']
+        zedd = open('login.txt', 'w')
+        zedd.write(toket)
+        zedd.close()
+        print '\x1b[1;92m[\xe2\x9c\x93] Login Success {^_^} '
+        os.system('xdg-open https://m.facebook.com/Kudiyan.Da.Prince')
+        time.sleep(1)
+        menu()
+    except KeyError:
+        print '\x1b[1;91m[!] Token Wrong !'
+        time.sleep(1.7)
 
 def menu():
 	os.system('clear')
