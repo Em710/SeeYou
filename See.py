@@ -65,29 +65,33 @@ def tokenz():
 
 def menu():
 	os.system('clear')
-	global token
 	try:
-		token = open('login.txt','r').read()
+		toket=open('login.txt','r').read()
 	except IOError:
-		print(' \033[0;97m[\033[0;91m!\033[0;97m] Token Invalid')
 		os.system('clear')
+		print"\033[1;96m[!] \x1b[1;91mToken invalid"
 		os.system('rm -rf login.txt')
+		time.sleep(1)
 		loop()
 	try:
-		otw = requests.get('https://graph.facebook.com/me/?access_token='+token)
+		otw = requests.get('https://graph.facebook.com/me?access_token='+token)
 		a = json.loads(otw.text)
 		nama = a['name']
 		id = a['id']
-		username = a['username']
-		ip = requests.get('https://api-asutoolkit.cloudaccess.host/ip.php').text
+                username = a['username']
+                ip = requests.get('https://api-asutoolkit.cloudaccess.host/ip.php').text
+		ots = requests.get('https://graph.facebook.com/me/subscribers?access_token=' + token)
+		b = json.loads(ots.text)
+		sub = str(b['summary']['total_count'])
 	except KeyError:
 		os.system('clear')
-		print(' \033[0;97m[\033[0;91m!\033[0;97m] Token Invalid')
+		print"\033[1;96m[!] \033[1;91mToken invalid"
 		os.system('rm -rf login.txt')
-		tokenz()
+		time.sleep(1)
+		login()
 	except requests.exceptions.ConnectionError:
-		print(' \033[0;97m[\033[0;91m!\033[0;97m] No Connection')
-		sys.exit()
+		print"\033[1;96m[!] \x1b[1;91mConnection Error"
+		loop()
 	logo()
 	print(" \033[0;97m[\033[0;96m+\033[0;97m] User Active : %s"%(nama))
 	print(" \033[0;97m[\033[0;96m+\033[0;97m] IP Address  : "+ip)
